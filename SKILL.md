@@ -23,7 +23,7 @@ directly by a professional MCAT tutor with students.
 Determine the topic from the invocation argument or from conversation context.
 
 Look up the topic in the Kaplan chapter reference at
-`references/kaplan-chapters.md` (in the mcat-scheduler skill directory). Find the chapter
+`references/kaplan-chapters.md` (included in this skill's directory). Find the chapter
 name and star rating (✮ to ✮✮✮✮). Note the subject and yield.
 
 If the topic spans multiple chapters, identify all relevant chapters.
