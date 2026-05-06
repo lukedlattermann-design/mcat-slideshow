@@ -5,7 +5,7 @@ description: >
   (1) a student says they are struggling with a topic and wants a slideshow,
   (2) the user explicitly asks for a "tutor-quality slideshow" on a topic,
   (3) the mcat-daily-checkin skill triggers this after a struggle check.
-  Output is a .pptx file saved to /Users/macl/code/test-week11/MCAT Presentations/.
+  Output is a .pptx file saved to an `MCAT Presentations/` folder in the current working directory.
 ---
 
 # MCAT Tutor-Quality Slideshow Generator
@@ -23,7 +23,7 @@ directly by a professional MCAT tutor with students.
 Determine the topic from the invocation argument or from conversation context.
 
 Look up the topic in the Kaplan chapter reference at
-`/Users/macl/.claude/skills/mcat-scheduler/references/kaplan-chapters.md`. Find the chapter
+`references/kaplan-chapters.md` (in the mcat-scheduler skill directory). Find the chapter
 name and star rating (✮ to ✮✮✮✮). Note the subject and yield.
 
 If the topic spans multiple chapters, identify all relevant chapters.
@@ -233,7 +233,7 @@ def add_title_bar(slide, title_text, subject, width=Inches(10), height=Inches(0.
 
 ```python
 import os
-output_dir = "/Users/macl/code/test-week11/MCAT Presentations"
+output_dir = os.path.join(os.getcwd(), "MCAT Presentations")
 os.makedirs(output_dir, exist_ok=True)
 topic_slug = topic_name.replace(" ", "_").replace("/", "-")
 output_path = f"{output_dir}/{topic_slug}.pptx"
@@ -264,7 +264,7 @@ If any check fails, add the missing content before saving.
 
 State the file path to the user:
 
-> "Your slideshow on [topic] has been saved to: /Users/macl/code/test-week11/MCAT Presentations/[filename].pptx"
+> "Your slideshow on [topic] has been saved to: ./MCAT Presentations/[filename].pptx"
 > "It contains [N] slides covering [list of main subtopics]. The practice questions are sourced from [AAMC/Khan Academy]."
 
 ---
